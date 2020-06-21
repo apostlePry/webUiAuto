@@ -36,18 +36,18 @@ public class BasePage {
 //            pages.forEach(pom-> System.out.println(pom.getPageName()));
 
             pages.stream().filter(pom -> pom.getPageName().equals(pageName)).findFirst()
-                    .get().getMethods().get(action).forEach(step -> action(step));
+                    .get().getMethods().get(action).forEach(step -> this.action(step));
         }else {
             // 自动化级别
             map.keySet().stream().forEach(key -> {
                 if ("click".toLowerCase().contains(key)) {
 //                    System.out.println(map.get(key));
-                    click(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)));
+                    this.click(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)));
                 }
 
                 if ("input".toLowerCase().contains(key)) {
                     String value = map.get("text").toString();
-                    input(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)), value);
+                    this.input(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)), value);
                 }
 
             });
@@ -55,6 +55,13 @@ public class BasePage {
 
     }
 
+    public void run(TestCase testCase){
+        testCase.getSteps().stream().forEach(
+                map -> this.action(map)
+        );
+    }
+
+    /**
     public void run(TestCase testCase) {
         testCase.getSteps().stream().forEach(map ->
                 map.keySet().stream().forEach(key -> {
@@ -73,6 +80,7 @@ public class BasePage {
                 })
         );
     }
+    */
 
     /**
      * 加载对应文件内容

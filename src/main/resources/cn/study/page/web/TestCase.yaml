@@ -2,7 +2,7 @@ name: name
 description: description
 steps:
   - page: home
-    action: init
+    action: start
 
   - page: home
     action: visit
@@ -12,3 +12,9 @@ steps:
 
   - page: contact
     action: search
+
+  - page: contact
+    action: switch
+
+  - page: home
+    action: login

@@ -1,6 +1,6 @@
 pageName: home
 methods:
-  init:
+  start:
     - action: get
       url: https://ceshiren.com
 
@@ -10,3 +10,6 @@ methods:
 
   switch:
     - toPage: contact
+
+  login:
+    - click: {xpath: "//span[@class='header-buttons']//button[2]"}

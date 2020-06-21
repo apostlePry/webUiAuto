@@ -1,5 +1,9 @@
 pageName: contact
 methods:
   search:
-    - click: {linktext: 最新}
-    - click: {linktext: 热门}
+    - click: {css: "#search-button"}
+    - input: {id: "search-term"}
+      text: appium
+
+  switch:
+    - toPage: home
