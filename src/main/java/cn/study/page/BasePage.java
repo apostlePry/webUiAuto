@@ -55,7 +55,15 @@ public class BasePage {
 
     }
 
+    /**
+     * 执行测试用例
+     * @param testCase 执行的测试用例
+     * @author jiaqinwen
+     * @creed: Talk is cheap,show me the code
+     * @date 2020/6/21 4:14 下午
+     */
     public void run(TestCase testCase){
+        // 解析testCase中步骤，所有步骤通过action方法解析后执行对应方法
         testCase.getSteps().stream().forEach(
                 map -> this.action(map)
         );
