@@ -1,0 +1,14 @@
+name: name
+description: description
+steps:
+  - page: home
+    action: init
+
+  - page: home
+    action: visit
+
+  - page: home
+    action: switch
+
+  - page: contact
+    action: search
