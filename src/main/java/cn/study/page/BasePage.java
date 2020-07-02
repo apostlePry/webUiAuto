@@ -41,11 +41,12 @@ public class BasePage {
         } else {
             // 自动化级别
             map.keySet().stream().forEach(key -> {
+                //点击操作
                 if ("click".toLowerCase().contains(key)) {
-//                    System.out.println(map.get(key));
                     this.click(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)));
                 }
 
+                //输入操作
                 if ("input".toLowerCase().contains(key)) {
                     String value = map.get("text").toString();
                     this.input(GetLocatorUtil.getByLocator((Map<String, Object>) map.get(key)), value);
