@@ -18,7 +18,7 @@ public class DDTTest {
 
     @ParameterizedTest
     @MethodSource
-    public void testLoadPage(TestCase testCase, String path) {
+    public void testLoadPage(TestCase testCase) {
         basePage.run(testCase);
     }
 
@@ -27,12 +27,12 @@ public class DDTTest {
         List<Arguments> all = new ArrayList<>();
 
         Arrays.asList(
-                "/cn/study/page/web/love_test/ContactPage.yaml",
-                "/cn/study/page/web/love_test/HomePage.yaml"
+                "/cn/study/page/web/TestRun.yaml"
         ).stream().forEach(path -> {
-            TestCase testCase = basePage.load(path);
-            testCase.setDescription(path);
-            all.add(Arguments.arguments(testCase, path));
+            List<TestCase> testCases = basePage.load(path);
+            testCases.stream().forEach(testCase ->
+                    all.add(Arguments.arguments(testCase))
+            );
         });
         return all;
 
@@ -40,6 +40,11 @@ public class DDTTest {
 
     @AfterAll
     public static void after() {
-
+        try {
+            Thread.sleep(3000);
+            ((WebBasePage)basePage).quit();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

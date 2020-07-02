@@ -41,6 +41,7 @@ public class WebBasePage extends BasePage {
 
     @Override
     public void input(By locator, String value) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
         WebElement element = this.getElement(locator);
         element.clear();
         element.sendKeys(value);

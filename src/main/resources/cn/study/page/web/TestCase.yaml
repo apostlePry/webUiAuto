@@ -1,20 +1,20 @@
-name: name
-description: description
-steps:
-  - page: home
-    action: start
+ - name: name
+   description: description
+   steps:
+     - page: home
+       action: start
 
-  - page: home
-    action: visit
+     - page: home
+       action: visit
 
-  - page: home
-    action: switch
+     - page: home
+       action: switch
 
-  - page: contact
-    action: search
+     - page: contact
+       action: search
 
-  - page: contact
-    action: switch
+     - page: contact
+       action: switch
 
-  - page: home
-    action: login
+     - page: home
+       action: login

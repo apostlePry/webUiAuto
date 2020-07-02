@@ -2,11 +2,12 @@ package cn.study.page.web;
 
 import cn.study.factory.PageFactory;
 import cn.study.page.BasePage;
-import cn.study.pojo.PageObjectModel;
 import cn.study.pojo.TestCase;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.*;
+
+import java.util.List;
 
 public class BasePageTest {
     private static BasePage basePage;
@@ -37,22 +38,30 @@ public class BasePageTest {
 
     @Test
     public void run() {
-        TestCase testCase = basePage.load("/cn/study/page/web/TestRun.yaml");
-        basePage.run(testCase);
+        List<TestCase> testCases = basePage.load("/cn/study/page/web/TestRun.yaml");
+        testCases.stream().forEach(
+                testCase -> basePage.run(testCase)
+        );
     }
 
     @Test
-    void runPOM() {
-        basePage.loadPages("src/main/resources/cn/study/page/web/love_test");
-        TestCase testCase = basePage.load("/cn/study/page/web/TestCase.yaml");
-        basePage.run(testCase);
+    public void runPOM() {
+        basePage.loadPages("classes/cn/study/page/web/love_test");
+        List<TestCase> testCases = basePage.load("/cn/study/page/web/TestCase.yaml");
+        testCases.stream().forEach(testCase -> basePage.run(testCase));
 
     }
 
     @Test
-    void load() throws JsonProcessingException {
-        TestCase testCase = basePage.load("src/main/resources/cn/study/page/web/TestCase.yaml");
+    public void load() {
+        List<TestCase> testCases = basePage.load("/cn/study/page/web/TestRun.yaml");
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writeValueAsString(testCase));
+        testCases.forEach(testCase -> {
+            try {
+                System.out.println(mapper.writeValueAsString(testCase));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

@@ -70,7 +70,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -157,6 +156,7 @@
                             <value>true</value>
                         </property>
                     </systemProperties>
+                    <workingDirectory>target/</workingDirectory>
                 </configuration>
             </plugin>
 

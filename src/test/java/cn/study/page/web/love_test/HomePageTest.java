@@ -7,15 +7,16 @@ import cn.study.pojo.TestCase;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class HomePageTest {
     private static BasePage basePage = null;
 
     @Test
     public void testLoad(){
         basePage = PageFactory.createPage("selenium");
-        TestCase load = basePage.load("/cn/study/page/web/TestRun.yaml");
-
-        basePage.run(load);
+        List<TestCase> testCases = basePage.load("/cn/study/page/web/TestRun.yaml");
+        testCases.stream().forEach(testCase -> basePage.run(testCase));
     }
 
     @AfterAll
