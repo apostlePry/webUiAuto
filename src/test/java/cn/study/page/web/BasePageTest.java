@@ -46,8 +46,8 @@ public class BasePageTest {
 
     @Test
     public void runPOM() {
-//        basePage.loadPages("classes/cn/study/page/web/love_test");
-        basePage.loadPages("src/main/resources/cn/study/page/web/love_test");
+        basePage.loadPages("classes/cn/study/page/web/love_test");
+//        basePage.loadPages("src/main/resources/cn/study/page/web/love_test");
         List<TestCase> testCases = basePage.load("/cn/study/page/web/TestCase.yaml");
         testCases.stream().forEach(testCase -> basePage.run(testCase));
 
