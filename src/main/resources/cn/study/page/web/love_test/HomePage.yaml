@@ -8,8 +8,5 @@ methods:
     - click: {linktext: 开源项目}
     - click: {linktext: 测试内推}
 
-  switch:
-    - toPage: contact
-
   login:
     - click: {xpath: "//span[@class='header-buttons']//button[2]"}

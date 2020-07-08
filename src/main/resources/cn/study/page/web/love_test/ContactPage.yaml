@@ -4,6 +4,3 @@ methods:
     - click: {css: "#search-button"}
     - input: {id: "search-term"}
       text: appium
-
-  switch:
-    - toPage: home
