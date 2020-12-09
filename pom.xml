@@ -18,7 +18,7 @@
         <selenium-version>3.141.59</selenium-version>
         <allure-version>RELEASE</allure-version>
         <aspectj.version>1.8.10</aspectj.version>
-        <groovy-version>3.0.3</groovy-version>
+        <groovy-version>3.0.7</groovy-version>
         <junit-platform-runner-version>1.5.2</junit-platform-runner-version>
         <appium-version>7.3.0</appium-version>
         <hamcrest-version>2.2</hamcrest-version>
